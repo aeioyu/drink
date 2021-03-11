@@ -11,8 +11,9 @@ import {
   ValidationPipe,
   NotFoundException,
 } from '@nestjs/common';
-import { IAllMachinesQuery, ICreateMachine, IUpdateMachine } from './types/machines.dto';
+import { ICreateMachine, IUpdateMachine } from './types/machines.dto';
 import { MachinesService } from './machines.service';
+import { IPaginationQuery } from 'src/global/types/pagination.dto';
 
 @Controller('machines')
 export class MachinesController {
@@ -20,10 +21,10 @@ export class MachinesController {
 
   @Get()
   @UsePipes(new ValidationPipe({ transform: true }))
-  fineAll(@Query() query: IAllMachinesQuery) {
+  fineAll(@Query() query: IPaginationQuery) {
     return this.machinesService.findAll({
-      limit: query.hasOwnProperty('limit') ? query.limit : 10,
-      page: query.hasOwnProperty('page') ? query.page : 1,
+      limit: query.hasOwnProperty('limit') ? +query.limit : 10,
+      page: query.hasOwnProperty('page') ? +query.page : 1,
     });
   }
 

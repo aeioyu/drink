@@ -17,10 +17,10 @@ import { InventoriesModule } from './inventories/inventories.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       ssl: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: false, // [TODO]: need to set "true" on production
       },
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: true, // [TODO]: need to set "false" on production
     }),
     MachinesModule,
     ProductsModule,

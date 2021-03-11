@@ -21,8 +21,7 @@ export class MachinesService {
   }
 
   async findAll(query): Promise<IPagination<Machine[]>> {
-    const page = +query.page;
-    const limit = +query.limit;
+    const { page, limit } = query;
     const [results, total] = await this.machinesRepository.findAndCount({
       take: limit,
       skip: (page - 1) * limit,

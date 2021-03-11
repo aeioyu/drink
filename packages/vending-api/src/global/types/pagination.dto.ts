@@ -4,3 +4,8 @@ export class IPagination<T> {
   totals: number;
   items: T;
 }
+
+export class IPaginationQuery {
+  page: number;
+  limit: number;
+}

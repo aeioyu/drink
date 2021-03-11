@@ -9,8 +9,3 @@ export class IUpdateMachine {
   location: string;
   isActive: boolean;
 }
-
-export class IAllMachinesQuery {
-  page: number;
-  limit: number;
-}
