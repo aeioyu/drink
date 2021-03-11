@@ -1,24 +1,55 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+  UsePipes,
+  ValidationPipe,
+  NotFoundException,
+} from '@nestjs/common';
+import { IAllMachinesQuery, ICreateMachine, IUpdateMachine } from './types/machines.dto';
+import { MachinesService } from './machines.service';
 
 @Controller('machines')
 export class MachinesController {
+  constructor(private readonly machinesService: MachinesService) {}
+
   @Get()
-  async getMachines(@Query('page') page: string, @Query('size') size: string) {
-    return `return machines by query page = ${page} size = ${size}`;
+  @UsePipes(new ValidationPipe({ transform: true }))
+  fineAll(@Query() query: IAllMachinesQuery) {
+    return this.machinesService.findAll({
+      limit: query.hasOwnProperty('limit') ? query.limit : 10,
+      page: query.hasOwnProperty('page') ? query.page : 1,
+    });
   }
 
   @Get(':id')
-  async getMachineByID(@Param('id') id: string) {
-    return `Get machine by id = ${id}`;
+  async findOne(@Param('id') id: string) {
+    const machine = await this.machinesService.findOne(id);
+
+    if (!machine) {
+      throw new NotFoundException();
+    }
+
+    return machine;
   }
 
   @Put(':id')
-  async updateMachineByID(@Param('id') id: string) {
-    return `update machine id = ${id}`;
+  update(@Param('id') id: string, @Body() updateMachine: IUpdateMachine) {
+    return `update machine id = ${id} with ${updateMachine}`;
   }
 
   @Post()
-  async createMachine(@Body('machine') machine: string) {
-    return `created machine ${machine}`;
+  create(@Body() createMachine: ICreateMachine) {
+    return this.machinesService.create(createMachine);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string): Promise<void> {
+    return this.machinesService.remove(id);
   }
 }
