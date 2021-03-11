@@ -1,0 +1,16 @@
+{
+  "name": "drink",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start:ui": "yarn workspace vending-ui dev",
+    "start:admin": "yarn workspace vending-admin dev",
+    "start:api": "yarn workspace vending-api dev",
+    "start": "concurrently --kill-others-on-fail \"yarn start:admin\"  \"yarn start:ui\" \"yarn start:api\""
+  },
+  "dependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
