@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPagination } from 'src/global/types/pagination.dto';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Product } from './products.entity';
 import { ICreateProduct } from './types/products.dto';
 
@@ -36,5 +36,11 @@ export class ProductsService {
       totals: total,
       items: results,
     };
+  }
+
+  findByIds(ids: number[]): Promise<Product[]> {
+    return this.productsRepository.find({
+      id: In(ids),
+    });
   }
 }
