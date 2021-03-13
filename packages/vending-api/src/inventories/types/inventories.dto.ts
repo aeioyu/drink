@@ -1,16 +1,5 @@
-export class ICreateInventory {
+export class IInventory {
   machineId: number;
   productId: number;
   qty: number;
-}
-
-export class IUpdateProduct {
-  serialNo: string;
-  location: string;
-  isActive: boolean;
-}
-
-export class IAllProductsQuery {
-  page: number;
-  limit: number;
 }
