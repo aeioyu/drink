@@ -12,12 +12,12 @@ export class InventoriesController {
     return this.inventoriesService.upsert(createInventory);
   }
 
-  @Get(':machineId')
-  @UsePipes(new ValidationPipe({ transform: true }))
-  async findAll(@Param('machineId') machineId: number, @Query('query') query: IPaginationQuery) {
-    return this.inventoriesService.findAllByMachineId(machineId, {
-      limit: query.hasOwnProperty('limit') ? +query.limit : 10,
-      page: query.hasOwnProperty('page') ? +query.page : 1,
-    });
-  }
+  // @Get(':machineId')
+  // @UsePipes(new ValidationPipe({ transform: true }))
+  // async findAll(@Param('machineId') machineId: number, @Query('query') query: IPaginationQuery) {
+  //   return this.inventoriesService.findAllByMachineId(machineId, {
+  //     limit: query.hasOwnProperty('limit') ? +query.limit : 10,
+  //     page: query.hasOwnProperty('page') ? +query.page : 1,
+  //   });
+  // }
 }
