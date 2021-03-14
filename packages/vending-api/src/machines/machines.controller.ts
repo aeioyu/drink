@@ -14,10 +14,14 @@ import {
 import { ICreateMachine, IUpdateMachine } from './types/machines.dto';
 import { MachinesService } from './machines.service';
 import { IPaginationQuery } from 'src/global/types/pagination.dto';
+import { InventoriesService } from '@/inventories/inventories.service';
 
 @Controller('machines')
 export class MachinesController {
-  constructor(private readonly machinesService: MachinesService) {}
+  constructor(
+    private readonly machinesService: MachinesService,
+    private readonly inventoriesService: InventoriesService,
+  ) {}
 
   @Get()
   @UsePipes(new ValidationPipe({ transform: true }))
@@ -52,5 +56,14 @@ export class MachinesController {
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.machinesService.remove(id);
+  }
+
+  @Get(':id/products')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  findMachineProducts(@Param('id') id: string, @Query() query: IPaginationQuery) {
+    return this.inventoriesService.findAllByMachineId(id, {
+      limit: query.hasOwnProperty('limit') ? +query.limit : 10,
+      page: query.hasOwnProperty('page') ? +query.page : 1,
+    });
   }
 }

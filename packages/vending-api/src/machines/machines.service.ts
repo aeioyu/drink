@@ -16,6 +16,9 @@ export class MachinesService {
     const machine = new Machine();
     machine.location = createMachine.location;
     machine.serialNo = createMachine.serialNo;
+    machine.name = createMachine.name;
+    machine.latitude = createMachine.latitude;
+    machine.longitude = createMachine.longitude;
 
     return this.machinesRepository.save(machine);
   }
