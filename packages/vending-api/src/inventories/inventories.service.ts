@@ -34,6 +34,9 @@ export class InventoriesService {
       where: {
         machineId: machineId,
       },
+      order: {
+        productId: 'ASC',
+      },
       relations: ['product'],
     });
 
