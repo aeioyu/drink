@@ -52,7 +52,7 @@ const MachineVendingPage: NextPage<Props> = () => {
     let secondsToGo = 6;
     const modal = Modal.success({
       title: 'Successfully Purchased !',
-      content: 'Thank you and have a nice day.',
+      content: "Thank you. Don't forgot your water. have a nice day.",
       centered: true,
       okText: `Buy Again (${secondsToGo})`,
     });

@@ -33,12 +33,12 @@ export interface IProduct {
 }
 
 async function getMachines(): Promise<IPagination<IMachine>> {
-  const { data } = await axios.get(`${config.apiUrl}/machines?limit=0`);
+  const { data } = await axios.get(`${config.apiUrl}/machines?limit=0&page=1`);
   return data;
 }
 
 async function getMachineProductsById(machineId): Promise<IPagination<IMachineInventories>> {
-  const { data } = await axios.get(`${config.apiUrl}/machines/${machineId}/products?limit=0`);
+  const { data } = await axios.get(`${config.apiUrl}/machines/${machineId}/products?limit=0&page=1`);
   return data;
 }
 
