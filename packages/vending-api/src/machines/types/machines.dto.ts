@@ -7,7 +7,9 @@ export class ICreateMachine {
 }
 
 export class IUpdateMachine {
+  name: string;
   serialNo: string;
   location: string;
-  isActive: boolean;
+  latitude: string;
+  longitude: string;
 }
