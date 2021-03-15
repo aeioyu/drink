@@ -26,6 +26,10 @@ export class InventoriesService {
     return this.inventoriesRepository.save(inventory);
   }
 
+  upsertMulti(createInventories: IInventory[]): Promise<Inventory[]> {
+    return this.inventoriesRepository.save(createInventories);
+  }
+
   async findAllByMachineId(machineId, query): Promise<IPagination<Inventory[]>> {
     const { page, limit } = query;
     const [results, total] = await this.inventoriesRepository.findAndCount({
@@ -57,6 +61,10 @@ export class InventoriesService {
 
   batchUpdate(inventories: IInventory[]) {
     return this.inventoriesRepository.save(inventories);
+  }
+
+  async remove(machineId: number, productId: number): Promise<void> {
+    await this.inventoriesRepository.delete({ machineId: machineId, productId: productId });
   }
 
   insufficientValidation(inventories: IInventoryAdjustmentItem[]) {

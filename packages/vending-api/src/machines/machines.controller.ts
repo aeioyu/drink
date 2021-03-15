@@ -15,6 +15,7 @@ import { ICreateMachine, IUpdateMachine } from './types/machines.dto';
 import { MachinesService } from './machines.service';
 import { IPaginationQuery } from 'src/global/types/pagination.dto';
 import { InventoriesService } from '@/inventories/inventories.service';
+import { IInventory } from '@/inventories/types/inventories.dto';
 
 @Controller('machines')
 export class MachinesController {
@@ -45,7 +46,7 @@ export class MachinesController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateMachine: IUpdateMachine) {
-    return `update machine id = ${id} with ${updateMachine}`;
+    return this.machinesService.update(+id, updateMachine);
   }
 
   @Post()
@@ -65,5 +66,15 @@ export class MachinesController {
       limit: query.hasOwnProperty('limit') ? +query.limit : 10,
       page: query.hasOwnProperty('page') ? +query.page : 1,
     });
+  }
+
+  @Post(':id/products')
+  adjustMachineProduct(@Body() createInventories: IInventory[]) {
+    return this.inventoriesService.upsertMulti(createInventories);
+  }
+
+  @Delete(':id/products/:productId')
+  removeMachineProduct(@Param('id') id: number, @Param('productId') productId: number) {
+    return this.inventoriesService.remove(id, productId);
   }
 }

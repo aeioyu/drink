@@ -1,3 +1,5 @@
+import { IsNumberString } from "class-validator";
+
 export class IPagination<T> {
   page: number;
   limit: number;
@@ -6,6 +8,9 @@ export class IPagination<T> {
 }
 
 export class IPaginationQuery {
+  @IsNumberString()
   page: number;
+
+  @IsNumberString()
   limit: number;
 }
