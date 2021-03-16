@@ -126,7 +126,7 @@ const MachineVendingPage: NextPage<Props> = () => {
                   onCompleteModal();
                   mutations.resetCart();
                 },
-                onError: (err) => {
+                onError: (err: any) => {
                   alert(err?.response?.data?.message);
                 },
               },

@@ -43,7 +43,7 @@ async function getMachineProductsById(machineId): Promise<IPagination<IMachineIn
 }
 
 export function useMachines(): UseQueryResult<IPagination<IMachine>> {
-  return useQuery('machines', getMachines);
+  return useQuery('machines', getMachines, { retry: false });
 }
 
 export function useMachineProducts(machineId: number): UseQueryResult<IPagination<IMachineInventories>> {
