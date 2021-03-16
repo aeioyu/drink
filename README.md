@@ -134,6 +134,7 @@ Admin system to manage machine, products and stock of application. This is an ex
 
 - Machines management, able to Create, Update, Delete.
 - Stock Management, able to manage product stock on machine.
+- Send Email notification to admin by email.
 
 ### Demo Environment
 
