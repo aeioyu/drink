@@ -14,9 +14,6 @@ RUN npm run build
 
 FROM node:14-alpine AS production
 
-RUN adduser -D myuser
-USER myuser
-
 ENV NODE_ENV=production
 
 WORKDIR /app
