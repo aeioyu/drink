@@ -1,5 +1,4 @@
 const withPlugins = require('next-compose-plugins');
-const withOptimizedImages = require('next-optimized-images');
 const bundleAnalyzer = require('@next/bundle-analyzer');
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -17,4 +16,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([withOptimizedImages, withBundleAnalyzer], nextConfig);
+module.exports = withPlugins([withBundleAnalyzer], nextConfig);
