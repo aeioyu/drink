@@ -52,13 +52,13 @@ const NewMachinesPage: NextPage = () => {
         setOpenImportModal(false);
         queryClient.invalidateQueries(['machines', 'products', machineId]);
       },
-      onError: (err) => {
+      onError: (err: any) => {
         openNotificationWithIcon('error', err?.response?.data?.message);
       },
     });
   };
 
-  const onQtyChange = (machineId, productId, qty) => {
+  const onQtyChange = (machineId, productId, qty): void => {
     const adjustStockData = {
       machineId: machineId,
       productId: productId,
@@ -68,7 +68,7 @@ const NewMachinesPage: NextPage = () => {
       onSuccess: () => {
         openNotificationWithIcon('success', `adjust product in product id #${productId} stock to ${qty} !!`);
       },
-      onError: (err) => {
+      onError: (err: any) => {
         openNotificationWithIcon('error', err?.response?.data?.message);
       },
     });
@@ -91,7 +91,7 @@ const NewMachinesPage: NextPage = () => {
               openNotificationWithIcon('success', 'Your new machine is updated.');
               queryClient.invalidateQueries(['machines', machineId]);
             },
-            onError: (err) => {
+            onError: (err: any) => {
               openNotificationWithIcon('error', err?.response?.data?.message);
             },
           })

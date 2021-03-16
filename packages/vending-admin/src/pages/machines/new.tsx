@@ -27,12 +27,12 @@ const NewMachinesPage: NextPage = () => {
       <MachineForm
         onSubmit={(data) =>
           createMachineMutation(data, {
-            onSuccess: (data) => {
+            onSuccess: (data: { id: number }) => {
               openNotificationWithIcon('success', 'Your new machine is created.');
               queryClient.invalidateQueries('machines');
               router.push(`/machines/${data?.id}`);
             },
-            onError: (err) => {
+            onError: (err: any) => {
               openNotificationWithIcon('error', err?.response?.data?.message);
             },
           })

@@ -7,7 +7,7 @@ interface Props {
   name: string;
   price: number;
   qty: number;
-  onQtyChange: (any) => number;
+  onQtyChange: (any) => void;
 }
 
 const ProductName = styled.div`
