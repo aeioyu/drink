@@ -3,13 +3,13 @@
 <br />
 <p align="center">
 
-  <img src="docs/images/achitect.jpeg" alt="Logo">
-
-  <h3 align="center">Vending Machine Application by Drink</h3>
+  <!-- <img src="docs/images/achitect.jpeg" alt="Logo"> -->
+  <h3 align="center">Drink</h3>
+  <h3 align="center">Vending Machine Application</h3>
 
   <p align="center">
      an web application to run on vending machine able to manage stock on system admin and show the
-     product on the vending machine screen. with ability to select and buy a drink that you like.
+     product on the vending machine screen. with ability to select and buy a drink that you like. (the Drink naming is not real but fun :))
   </p>
 </p>
 
@@ -46,7 +46,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Overview Architecture][product-screenshot]]
+### Architecture Overview
+![Overview Architecture][product-screenshot]
 
 ### Built With
 
