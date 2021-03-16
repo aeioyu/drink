@@ -1,19 +1,15 @@
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-
-  <!-- <img src="docs/images/achitect.jpeg" alt="Logo"> -->
-  <h3 align="center">Drink</h3>
+  <h3 align="center">Drink.Co</h3>
   <h3 align="center">Vending Machine Application</h3>
 
   <p align="center">
      an web application to run on vending machine able to manage stock on system admin and show the
-     product on the vending machine screen. with ability to select and buy a drink that you like. (the Drink naming is not real but fun :))
+     product on the vending machine screen. with ability to select and buy a drink that you like. 
+     <i>ps. the Drink naming is for fun :)</i>
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -41,94 +37,133 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
 
-### Architecture Overview
+# About The Project
+
 ![Overview Architecture][product-screenshot]
 
-### Built With
+## Built With
 
 this project is build with Typescript on mono repo with yarn workspace. contain 3 application in folder packages.
-* [Vendor-UI](https://github.com/aeioyu/drink/tree/main/packages/vending-ui) NextJS
-* [Vendor-API](https://github.com/aeioyu/drink/tree/main/packages/vending-api) NestJS, PostgresQL
-* [Vendor-Admin](https://github.com/aeioyu/drink/tree/main/packages/vending-admin) PostgresQL
 
+- [vending-ui](https://github.com/aeioyu/drink/tree/main/packages/vending-ui) (NextJS)
+- [vending-api](https://github.com/aeioyu/drink/tree/main/packages/vending-api) (NestJS, PostgresQL)
+- [vending-admin](https://github.com/aeioyu/drink/tree/main/packages/vending-admin) (PostgresQL)
+  <br />
 
 <!-- GETTING STARTED -->
-## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+# Getting Started
 
-### Prerequisites
+This is an example of how each application work with instructions on setting up your project locally.
+this monorepo required `yarn` as a package manager because npm not support workspace.
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+## Vending Machine UI
+
+This is an example of how to setup Vending Machine UI application. running on port 3000
+
+### Feature
+
+- Machine Product listing page. able to show product of machine that selected.
+- Cart. able to add product to cart with price calculation.
+- Checkout. able to adjust the stock of purchased product. and show product that not available.
+
+### Demo Environment
+
+[https://vending-machine-by-drink-ui.herokuapp.com/](https://vending-machine-by-drink-ui.herokuapp.com/)
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. go to packages/vending-ui and create `env.local` file by follow on env.local.example file.
+2. on the root of project run
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   yarn install
    ```
-3. Install NPM packages
+3. to start only ui app use this command.
+
    ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+   yarn start:ui
    ```
 
+   or start all application together.
 
+   ```sh
+   yarn start
+   ```
 
-<!-- USAGE EXAMPLES -->
-## Usage
+## Vending Machine API
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Restful API build with NestJS and connect with PostgresQL. This is an example of how to setup vending machine api. running on port 8001
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Demo Environment
 
+[https://vending-machine-by-drink-api.herokuapp.com/](https://vending-machine-by-drink-api.herokuapp.com/)
 
+### API Document
 
-<!-- ROADMAP -->
+[Go To Docs](https://documenter.getpostman.com/view/981639/Tz5s5cDE)
+
+### Installation
+
+1. on the root of project run
+   ```sh
+   yarn install
+   ```
+2. to start only ui app use this command.
+
+   ```sh
+   yarn start:ui
+   ```
+
+   or start all application together.
+
+   ```sh
+   yarn start
+   ```
+
+### Database ER Diagram
+
+![API ER][er-diagram]
+
+## Admin System
+
+Admin system to manage machine, products and stock of application. This is an example of how to setup Admin application. default running on port 8000
+
+### Feature
+
+- Machines management, able to Create, Update, Delete.
+- Stock Management, able to manage product stock on machine.
+
+### Demo Environment
+
+[https://vending-machine-by-drink-admin.herokuapp.com/](https://vending-machine-by-drink-admin.herokuapp.com/)
+
+### Installation
+
+1. go to packages/vending-admin and create `env.local` file by follow on env.local.example file.
+2. on the root of project run
+   ```sh
+   yarn install
+   ```
+3. to start only ui app use this command.
+
+   ```sh
+   yarn start:ui
+   ```
+
+   or start all application together.
+
+   ```sh
+   yarn start
+   ```
+
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+- Product Management feature with Create, Update, Delete product on the system.
+- Configuration Management feature able to config stock indicator for stock notification.
+- Authorization Feature to manage permission to access admin system.
+- Report, to show product stock report for admin to manage product.
 
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: docs/images/achitect.jpeg
+[er-diagram]: docs/images/er.jpeg
