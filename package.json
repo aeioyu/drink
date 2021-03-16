@@ -8,6 +8,7 @@
     "start:ui": "yarn workspace vending-ui dev",
     "start:admin": "yarn workspace vending-admin dev",
     "start:api": "yarn workspace vending-api dev",
+    "build:api": "yarn workspace vending-api build",
     "start": "concurrently --kill-others-on-fail \"yarn start:admin\"  \"yarn start:ui\" \"yarn start:api\""
   },
   "dependencies": {
