@@ -17,12 +17,7 @@ const CartContainer = styled.div`
   justify-content: space-between;
   align-content: center;
   align-items: center;
-`;
-
-const ImageContainer = styled.div`
-  width: 60px;
-  height: 60px;
-  border: 1px solid #eeeeee;
+  position: relative;
 `;
 
 const PriceRow = styled.div`
@@ -48,6 +43,7 @@ const Totals = styled.div`
   font-size: 24px;
   min-width: 100px;
   text-align: right;
+  padding-right: 16px;
 `;
 
 const AdjustButton = styled.button`
@@ -69,7 +65,7 @@ const RemoveCartButton = styled.div`
   text-align: center;
 
   position: absolute;
-  right: 5px;
+  right: 0px;
   width: 24px;
   height: 24px;
   line-height: 24px;
@@ -77,12 +73,38 @@ const RemoveCartButton = styled.div`
   border-radius: 50%;
 `;
 
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 0;
+  padding-bottom: 140%;
+  position: relative;
+  margin-bottom: 16px;
+`;
+
+const Image = styled.img`
+  position: absolute;
+  top: -10%;
+  height: 100%;
+  max-width: none;
+`;
+
+const ImageBox = styled.div`
+  width: 60px;
+  height: 60px;
+  border: 1px solid #eeeeee;
+`;
+
 const CartItem: React.FC<Props> = ({ name, qty, image, price, onIncreaseClick, onDecreaseClick, onRemoveClick }) => {
   return (
     <CartContainer>
-      <ImageContainer>
-        <img src={image} alt={name} />
-      </ImageContainer>
+      <ImageBox>
+        <ImageContainer>
+          <Image src={image} alt={name} />
+        </ImageContainer>
+      </ImageBox>
       <PriceRow>
         <AdjustButton color="#D27373" onClick={onDecreaseClick}>
           -

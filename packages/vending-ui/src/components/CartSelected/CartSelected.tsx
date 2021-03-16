@@ -12,8 +12,8 @@ const CartSelectedCircle = styled.div`
   transform: translate(-50%, -50%);
   background: #73e973;
   right: 0;
-  height: 200px;
-  width: 200px;
+  height: 40%;
+  width: 70%;
   border-radius: 50%;
   z-index: 0;
 `;
