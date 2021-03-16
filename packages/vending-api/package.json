@@ -22,7 +22,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "create:controller": "nest g controller",
     "create:service": "nest g service",
-    "create:module": "nest g module"
+    "create:module": "nest g module",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@nestjs-modules/mailer": "^1.5.1",
