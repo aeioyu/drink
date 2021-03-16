@@ -127,30 +127,23 @@ const NewMachinesPage: NextPage = () => {
         loadMore={false}
         dataSource={products?.items}
         renderItem={(item) => (
-          <List.Item
-            actions={[
-              <Button
-                key="list-loadmore-more"
-                onClick={() =>
-                  removeMachineProduct(item.productId, {
-                    onSuccess: () => {
-                      queryClient.invalidateQueries(['machines', 'products', machineId]);
-                    },
-                  })
-                }
-              >
-                remove from machine
-              </Button>,
-            ]}
-          >
-            <ProductItem
-              name={item.product.name}
-              price={item.product.price}
-              image={item.product.image}
-              qty={item.qty}
-              onQtyChange={(qty) => onQtyChange(item.machineId, item.productId, qty)}
-            />
-          </List.Item>
+          <ProductItem
+            name={item.product.name}
+            price={item.product.price}
+            image={item.product.image}
+            qty={item.qty}
+            onQtyChange={(qty) => onQtyChange(item.machineId, item.productId, qty)}
+            onRemoveClick={() => {
+              if (confirm('remove this product from this vending machine?')) {
+                removeMachineProduct(item.productId, {
+                  onSuccess: () => {
+                    openNotificationWithIcon('success', 'remove product from machine success');
+                    queryClient.invalidateQueries(['machines', 'products', machineId]);
+                  },
+                });
+              }
+            }}
+          />
         )}
       />
     </Layout>

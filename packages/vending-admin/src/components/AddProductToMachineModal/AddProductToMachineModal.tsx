@@ -17,7 +17,6 @@ const AddMoreContainer = styled.div`
   right: 0;
   background: rgba(0, 0, 0, 0.2);
   z-index: 1;
-
   overflow: auto;
 `;
 
@@ -25,10 +24,13 @@ const AddMoreBox = styled.div`
   width: 100%;
   max-width: 1000px;
   margin: auto;
-  max-height: 90vh;
   background: #ffffff;
   min-height: 500px;
-  transform: translateY(30%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-bottom: 100px;
 `;
 
 const BoxFooter = styled.div`
@@ -47,6 +49,8 @@ const BoxFooter = styled.div`
 const Content = styled.div`
   display: flex;
   padding: 0 24px;
+  max-height: 60vh;
+  overflow: auto;
 `;
 
 const ProductItem = styled.div`
@@ -56,8 +60,30 @@ const ProductItem = styled.div`
   text-align: center;
 `;
 
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 0;
+  padding-bottom: 140%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 16px;
+`;
+
+const Image = styled.img`
+  position: absolute;
+  top: 0;
+  height: 100%;
+  max-width: none;
+`;
+
 const AddProductToMachineModal: React.FC<Props> = ({ onSubmit, onCloseClick, loading }) => {
-  const { data, isLoading } = useProducts();
+  const { data, isLoading } = useProducts({
+    limit: 0,
+    page: 1,
+  });
   const [importProduct, setImportProduct] = useState({});
 
   const onProductItemClick = (newProductId) => {
@@ -83,7 +109,9 @@ const AddProductToMachineModal: React.FC<Props> = ({ onSubmit, onCloseClick, loa
             {data?.items.map((item) => (
               <Col flex="170px" key={item.id}>
                 <ProductItem active={importProduct[item.id]} onClick={() => onProductItemClick(item.id)}>
-                  <img src={item.image} alt="" />
+                  <ImageContainer>
+                    <Image src={item.image} />
+                  </ImageContainer>
                   <br />
                   <p>{item.name}</p>
                 </ProductItem>
