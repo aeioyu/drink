@@ -7,7 +7,9 @@ export class ICreateProduct {
 }
 
 export class IUpdateProduct {
-  serialNo: string;
-  location: string;
-  isActive: boolean;
+  sku: string;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
 }

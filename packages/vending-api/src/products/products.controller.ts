@@ -1,7 +1,19 @@
-import { Body, Controller, Get, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+  Put,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { IPaginationQuery } from 'src/global/types/pagination.dto';
 import { ProductsService } from './products.service';
-import { ICreateProduct } from './types/products.dto';
+import { ICreateProduct, IUpdateProduct } from './types/products.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -16,8 +28,29 @@ export class ProductsController {
     });
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    const product = await this.productsService.findOne(id);
+
+    if (!product) {
+      throw new NotFoundException();
+    }
+
+    return product;
+  }
+
   @Post()
   create(@Body() createProduct: ICreateProduct) {
     return this.productsService.create(createProduct);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() updateProduct: IUpdateProduct) {
+    return this.productsService.update(+id, updateProduct);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.productsService.remove(id);
   }
 }

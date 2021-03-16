@@ -11,7 +11,7 @@ export class NotificationsService {
 
     return this.mailerService
       .sendMail({
-        to: 'aeio.yu@gmail.com', // List of receivers email address
+        to: 'aeio.yu2@gmail.com', // List of receivers email address
         from: '"Vending Machine Notification" <noreply@drink.com>', // Senders email address
         subject: `Vending Machine #${vendingMachineId} has a lower stock product`,
         template: 'insufficientStockNotification', // The `.pug` or `.hbs` extension is appended automatically.
