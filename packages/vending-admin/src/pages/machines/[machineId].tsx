@@ -66,6 +66,7 @@ const NewMachinesPage: NextPage = () => {
     };
     importMachineProduct([adjustStockData], {
       onSuccess: () => {
+        queryClient.invalidateQueries(['machines', 'products', machineId]);
         openNotificationWithIcon('success', `adjust product in product id #${productId} stock to ${qty} !!`);
       },
       onError: (err: any) => {
