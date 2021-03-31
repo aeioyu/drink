@@ -11,28 +11,6 @@
   </p>
 </p>
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#vending-machine-ui">Vending Machine UI</a></li>
-        <li><a href="#vending-machine-api">Vending Machine API</a></li>
-        <li><a href="#admin-">Admin System</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-  </ol>
-</details>
-
 <!-- ABOUT THE PROJECT -->
 
 # About The Project
